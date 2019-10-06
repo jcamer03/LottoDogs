@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+function payday(){
+
+	var hdog;
+	hdog = document.getElementById("hdog").value;
+	var ffries;
+	ffries = document.getElementById("ffries").value;
+	var drink;
+	drink = document.getElementById("drink").value;
+
+	var subtotal;
+	var hcost;
+	var fcost;
+	var dcost;
+	var discount_bool = 0;
+	var tax;
+	var ftotal;
+	hcost = hdog * 3.25;
+	fcost = ffries * 2.00;
+	dcost = drink * 1.50;
+	subtotal = hcost + fcost + dcost;
+	subtotal = subtotal.toFixed(2);
+
+	if(subtotal >= 20.00)
+	{
+		subtotal *= 0.9;
+		discount_bool = 1;
+		subtotal = subtotal.toFixed(2);
+	}
+
+	tax = subtotal * 0.0625;
+	tax = tax.toFixed(2);
+	ftotal = parseFloat(subtotal) + parseFloat(tax);
+	ftotal = ftotal.toFixed(2);
+
+	alert("You ordered:\n" + hdog + " hot dogs.\n" + ffries + " fries\n" + drink + " drinks\n");
+	if(discount_bool==1)
+	{
+		alert("Discount applied! 10% off!");
+	}
+
+	alert("Your subtotal:\n$" + subtotal + "\nTax:\n$" + tax + "\nTotal: \n$" + ftotal);
+
+	document.write("<center><h2>Hey asshole don't hold up the line, whaddaya want?</h2></center><center><form>	<div class='disp'> Hot Dogs ($3.25 each) </div><div class='entry'><input placeholder='53' type='text' name='hdog' id='hdog'></div><div class='disp'> French Fries ($2.00 each) </div><div class='entry'><input placeholder='217' type='text' name='ffries' id='ffries'></div><div class='disp'> Drink ($1.50 each) </div><div class='entry'><input placeholder='7341' type='text' name='drink' id='drink'></div><button onclick='payday()'> dear god don't pay with check (Order) </button></form></center><center><a href='index.html'>|HOME|</a><a href='lotto.html'>|LOTTERY|</a></center>");
+}
+
+</script>
+
+<center><h2>Hey asshole don't hold up the line, whaddaya want?</h2></center>
+<center><form>
+	
+	<div class="disp"> Hot Dogs ($3.25 each) </div>
+	<div class="entry"><input placeholder="53" type="text" name="hdog" id="hdog"></div>
+	<div class="disp"> French Fries ($2.00 each) </div>
+	<div class="entry"><input placeholder="217" type="text" name="ffries" id="ffries"></div>
+	<div class="disp"> Drink ($1.50 each) </div>
+	<div class="entry"><input placeholder="7341" type="text" name="drink" id="drink"></div>
+	<button onclick="payday()"> dear god don't pay with check (Order) </button>
+</form></center>
+<center><a href='index.html'>|HOME|</a><a href='lotto.html'>|LOTTERY|</a></center>
+
+</body>
+</html>
