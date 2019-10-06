@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<script type="text/javascript">
+
+	var rarray;
+	rarray = createRandomArray(6, 1, 48);
+	var rlnum = Math.round(Math.random() * (18 - 1) + 1);
+	rarray[5] = rlnum;
+
+	for(var i = 0; i < 5; i++)
+	{
+		for(var j = i+1; j < 5; j++)
+		{
+			if(rarray[i] = rarray[j])
+			{
+				rarray[i] = Math.round(Math.random() * (48 - 1) + 1);
+			}
+		}
+	}
+	document.write("<center><h1>I wouldn't normally do this, but today's numbers are: <br/> <br/> <br/> </h1>")
+	for (var i = 0; i < 5; i++)
+	{
+		document.write(rarray[i] + " ")
+	}
+	document.write(rlnum + "<br/><br/><br/></center>")
+	
+	
+function winnings() {
+	var array;
+	array = document.getElementById("numbers").value;
+	var lnum;
+	lnum = document.getElementById("lnum").value;
+	var cleaved = array.split(" ");
+	cleaved[5] = lnum;
+
+
+
+
+	document.write("<h3 style='color:blue;text-align:center;'>Here are today's drawn numbers! (With the far right being the lucky number) <br/> <br/>");
+	for (var i = 0; i < 6; i++){
+		document.write(rarray[i] + " ")
+	}
+	document.write("<br/><br/>");
+
+	rarray = rarray.slice(0, 5).sort(function(a,b){return a-b}).concat(rarray[5]);
+
+	document.write("In Order: <br/> <br/>");
+	for (var i = 0; i < 6; i++){
+		document.write(rarray[i] + " ")
+	}
+	document.write("<br/><br/>");
+
+	document.write("And your picks were: <br/> <br/>");
+	for (var i = 0; i < 6; i++){
+		document.write(cleaved[i] + " ")
+	}
+	document.write("<br/><br/>");
+
+	var match_ctr = 0;
+
+	for(var i=0; i < 5; i++)
+	{
+		for (var j = 0; j < 5; j++) {
+		
+			if(parseInt(rarray[i])==parseInt(cleaved[j]))
+			{
+				match_ctr++;
+			}
+
+		}
+	}
+
+
+	document.write("YOU HAVE WON: <br/>");
+
+	if(parseInt(rarray[5]) == parseInt(cleaved[5]))
+	{
+		switch(match_ctr) {
+		  case 0:
+		  	document.write("$4!</h3>");
+		    break;
+		  case 1:
+		  	document.write("$6!</h3>");
+		    break;
+		  case 2:
+		  	document.write("$25!</h3>");
+		  	break;
+		  case 3:
+		  	document.write("$150!</h3>");
+		  	break;
+		  case 4:
+		  	document.write("$5000!</h3>");
+		  	break;
+		  case 5:
+		  	document.write("$7000 a WEEK for LIFE!</h3>");
+		  	break;
+		  default:
+		  	document.write("AN ERROR</h3>");
+		  	break;
+		}
+	}
+	else
+	{
+		switch(match_ctr) {
+		  case 0:
+		  	document.write("Nothing, but I like your shoes!</h3>");
+		    break;
+		  case 1:
+		  	document.write("Nothing, but you got one!</h3>");
+		    break;
+		  case 2:
+		  	document.write("$3!</h3>");
+		  	break;
+		  case 3:
+		  	document.write("$20!</h3>");
+		  	break;
+		  case 4:
+		  	document.write("$200!</h3>");
+		  	break;
+		  case 5:
+		  	document.write("$25000 a YEAR for LIFE!</h3>");
+		  	break;
+		  default:
+		  	document.write("AN ERROR</h3>");
+		  	break;
+		}
+	}
+
+	document.write("<center><h2>Put your lucky numeros here!</h2></center><center><form><div class='disp'> Enter your 5, space seperated numbers here</div><div class='entry'><input placeholder='# # # # #' type='text' name='numbers' id='numbers'></div><div class='disp'> Enter your luckiest number </div><div class='entry'><input placeholder='L#' type='text' name='lnum' id='lnum'></div><button onclick='winnings()'> Run the numbers! </button></form></center><center><a href='index.html'>|HOME|</a><a href='hotdog.html'>|JOE'S HOT DOGS|</a></center>");
+
+
+	
+}
+
+function createRandomArray(dataSetSize, minValue, maxValue) {
+  return new Array(dataSetSize).fill(0).map(function(n) {
+    return Math.round(Math.random() * (maxValue - minValue) + minValue);
+  });
+}
+
+</script>
+
+<center><h2>Put your lucky numeros here!</h2></center>
+<center><form>
+	
+	<div class="disp"> Enter your 5, space seperated numbers here</div>
+	<div class="entry"><input placeholder="# # # # #" type="text" name="numbers" id="numbers"></div>
+	<div class="disp"> Enter your luckiest number </div>
+	<div class="entry"><input placeholder="L#" type="text" name="lnum" id="lnum"></div>
+	<button onclick="winnings()"> Run the numbers! </button>
+</form></center>
+<center><a href='index.html'>|HOME|</a><a href='hotdog.html'>|JOE'S HOT DOGS|</a></center>
+
+</body>
+</html>
